@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      main {
+        width: 80vw;
+        margin: 0 auto;
+      }
+
+      section {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        grid-gap: 20px;
+      }
+
+      article {
+        border: 1px solid #333;
+      }
+
+      img {
+        width: 100%;
+      }
+
+      header,
+      footer {
+        text-align: center;
+      }
+
+      header,
+      footer {
+        padding: 10px 0;
+        border: 1px solid #888;
+      }
+
+      .boxshadow {
+        box-shadow: 10px 10px 5px 0px rgba(50, 135, 173, 0.75);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Titel</h1>
+    </header>
+
+    <main>
+      <h2>Undertitel</h2>
+      <section>
+        <article>
+          <img src="https://placeimg.com/400/300/arch" alt="" class="first" />
+          <h3>Article 1</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, assumenda tenetur iste reiciendis omnis, optio amet velit quibusdam earum ad hic porro obcaecati incidunt eum cumque commodi accusamus rerum laborum.</p>
+        </article>
+        <article>
+          <img src="https://placeimg.com/400/300/nature" alt="" />
+          <h3>Article 2</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, assumenda tenetur iste reiciendis omnis, optio amet velit quibusdam earum ad hic porro obcaecati incidunt eum cumque commodi accusamus rerum laborum.</p>
+        </article>
+      </section>
+    </main>
+    <footer>This is the footer</footer>
+
+    <script>
+      const articleSection = document.querySelector("section");
+      const titel = document.querySelector("header h1");
+
+      const article1 = document.querySelector("article:nth-child(1)");
+      const img1 = document.querySelector("article:nth-child(1) img");
+      const article1Heading = document.querySelector("article:nth-child(1) h3");
+      const article1Content = document.querySelector("article:nth-child(1) p");
+
+      const article2 = document.querySelector("article:nth-child(2)");
+      const img2 = document.querySelector("article:nth-child(2) img");
+      const article2Heading = document.querySelector("article:nth-child(2) h3");
+      const article2Content = document.querySelector("article:nth-child(2) p");
+
+      document.addEventListener("DOMContentLoaded", start);
+
+      function start() {
+        titel.textContent = "billeder";
+        article1Heading.textContent = "Arkitektur";
+        article2Heading.innerHTML = "<h3>Natur</3>";
+
+        img1.src = "https://placeimg.com/400/300/tech";
+        img1.alt = "tech";
+
+        let newArticle = document.createElement("article");
+        let newH3 = document.createElement("h3");
+        let newHeadlineText = document.createTextNode("Mennesker");
+        newH3.appendChild(newHeadlineText);
+        let newPic = document.createElement("img");
+        newPic.src = "https://placeimg.com/400/300/people";
+        let newContent = document.createElement("p");
+        newContent.textContent = "Her står der noget om mennesker";
+        newArticle.appendChild(newPic);
+        newArticle.appendChild(newH3);
+        newArticle.appendChild(newContent);
+        articleSection.appendChild(newArticle);
+
+        img1.addEventListener("click", skiftBillede1);
+        img2.addEventListener("click", skiftBillede2);
+      }
+
+      function skiftBillede1() {
+        // console.log(this);
+        let tal = Math.round(Math.random() * 10);
+        img1.src = "https://placeimg.com/400/300/arch?t=" + tal;
+      }
+
+      function skiftBillede2() {
+        // console.log(this);
+        let tal = Math.round(Math.random() * 10);
+        img2.src = "https://placeimg.com/400/300/nature?t=" + tal;
+      }
+
+      let articleShadow = document.querySelector("article");
+
+      articleShadow.addEventListener("mousemove", boxShadowAdd);
+      articleShadow.addEventListener("mouseout", boxShadowRemove);
+
+      function boxShadowRemove() {
+        articleShadow.classList.remove("boxshadow");
+      }
+      function boxShadowAdd() {
+        articleShadow.classList.add("boxshadow");
+      }
+    </script>
+  </body>
+</html>
