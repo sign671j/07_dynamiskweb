@@ -13,5 +13,26 @@
       <img id="sprite" src="billeder/sprite.png" alt="sprite" />
       <img id="cola" src="billeder/cola.jpeg" alt="cola" />
     </div>
+
+    <script>
+      const øl = document.querySelector("#øl");
+      const snaps = document.querySelector("#snaps");
+      const sprite = document.querySelector("#sprite");
+      const cola = document.querySelector("#cola");
+
+      øl.addEventListener("click", tjek);
+      snaps.addEventListener("click", tjek);
+      sprite.addEventListener("click", tjek);
+      cola.addEventListener("click", tjek);
+
+      function tjek() {
+        console.log(this.alt);
+        if (this.alt == "øl" || this.alt == "snaps") {
+          console.log("Indeholder alkohol");
+        } else {
+          console.log("alkoholfri");
+        }
+      }
+    </script>
   </body>
 </html>
