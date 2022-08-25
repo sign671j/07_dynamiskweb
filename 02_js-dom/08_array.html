@@ -12,11 +12,7 @@
     <script>
       const playliste = ["Pink venom", "Pop", "Cry for me", "Hip", "Fire", "Scream", "Illusion", "Loco", "Gotta go", "Snapping"];
 
-      playliste.forEach(visHvertElement);
-
-      function visHvertElement(element) {
-        console.log(element);
-      }
+      playliste.forEach((nummer) => (display.innerHTML += "<li>" + nummer + "</li>"));
     </script>
   </body>
 </html>
