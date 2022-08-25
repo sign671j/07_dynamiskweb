@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 10px;
+        padding: 0;
+      }
+
+      article {
+        border: 1px solid #333;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="data-container">
+      <template>
+        <article id="dyr">
+          <h3></h3>
+          <img src="" alt="" />
+          <p class="type"></p>
+          <p class="levested"></p>
+        </article>
+      </template>
+    </section>
+    <script>
+      document.addEventListener("DOMContentLoaded", visDyr);
+
+      let dyr = [
+        { navn: "Gris", type: "pattedyr", billede: "http://mabe-kea.dk/E19/pics/pig.png", levested: "svinefarme" },
+        { navn: "Frø", type: "amfibie", billede: "http://mabe-kea.dk/E19/pics/frog.png", levested: "vandhuller" },
+        { navn: "Ræv", type: "pattedyr", billede: "http://mabe-kea.dk/E19/pics/fox.png", levested: "skove" },
+        { navn: "Sild", type: "fisk", billede: "http://mabe-kea.dk/E19/pics/sild.jpg", levested: "havet" },
+        { navn: "Krokodille", type: "krybdyr", billede: "http://mabe-kea.dk/E19/pics/kroko.jpg", levested: "floder" },
+      ];
+
+      function visDyr() {
+        const container = document.querySelector(".data-container");
+        const dyrTemplate = document.querySelector("template");
+
+        dyr.forEach((dyr) => {
+          let klon = dyrTemplate.cloneNode(true).content;
+          klon.querySelector("h3").textContent = dyr.navn;
+          klon.querySelector(".type").textContent = "Type: " + dyr.type;
+          klon.querySelector(".levested").textContent = "Levested: " + dyr.levested;
+          klon.querySelector("img").src = dyr.billede;
+          container.appendChild(klon);
+        });
+      }
+    </script>
+  </body>
+</html>
