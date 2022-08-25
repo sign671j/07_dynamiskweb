@@ -22,8 +22,8 @@
       const destination = document.querySelector("#dyr");
 
       destination.querySelector("h3").textContent = dyr.navn;
-      destination.querySelector("p").textContent = dyr.type;
-      destination.querySelector("p:last-child").textContent = dyr.levested;
+      destination.querySelector("p").textContent = "Type: " + dyr.type;
+      destination.querySelector("p:last-child").textContent = "Levested: " + dyr.levested;
       destination.querySelector("img").src = dyr.billede;
     </script>
   </body>
