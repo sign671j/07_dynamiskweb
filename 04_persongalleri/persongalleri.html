@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      main {
+        width: 80vw;
+        margin: 0 auto;
+      }
+      article {
+        border: 3px solid pink;
+        padding: 5px;
+      }
+
+      section {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-gap: 20px;
+      }
+
+      img {
+        width: 100%;
+      }
+
+      h2 {
+        font-family: "Lato", sans-serif;
+      }
+
+      p {
+        font-family: "Lato", sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section>
+        <template>
+          <article>
+            <img src="" alt class="billedeurl" />
+            <h2 class="navn"></h2>
+            <p class="email"></p>
+            <p class="fdag"></p>
+          </article>
+        </template>
+      </section>
+    </main>
+
+    <script>
+      const url = "https://persongalleri-5d3e.restdb.io/rest/persongalleri";
+
+      const options = {
+        headers: {
+          "x-apikey": "600fe9211346a1524ff12e31",
+        },
+      };
+
+      const section = document.querySelector("section");
+      const template = document.querySelector("template").content;
+
+      async function hentData() {
+        const resspons = await fetch(url, options);
+        const json = await resspons.json();
+        vis(json);
+      }
+
+      function vis(json) {
+        console.log(json);
+        json.forEach((person) => {
+          const klon = template.cloneNode(true);
+          klon.querySelector(".billedeurl").src = "faces/" + person.billede;
+          klon.querySelector(".navn").textContent = person.fornavn;
+          klon.querySelector(".email").innerHTML = "<a href='mailto:" + person.email + "''>" + person.email + "</a>";
+          klon.querySelector(".fdag").textContent = person.fødselsdag;
+          section.appendChild(klon);
+        });
+      }
+
+      hentData();
+    </script>
+  </body>
+</html>

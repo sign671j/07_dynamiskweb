@@ -7,10 +7,21 @@
     <title>Document</title>
   </head>
   <body>
+    <article id="dyr"></article>
     <script>
+      document.addEventListener("DOMContentLoaded", start);
+
       let dyr = { navn: "Gris", type: "pattedyr", billede: "http://mabe-kea.dk/E19/pics/pig.png", levested: "svinefarme" };
 
-      console.log(`navn:${dyr.navn}, type:${dyr.type}, billede:${dyr.billede}, levested:${dyr.levested}`);
+      console.log(`Navn: ${dyr.navn}, Type: ${dyr.type}, Levested: ${dyr.levested}, Billede: ${dyr.billede}`);
+
+      function start() {
+        const destination = document.querySelector("#dyr");
+        const infoOmDyr = `Navn: ${dyr.navn}, Type: ${dyr.type}, Levested: ${dyr.levested}`;
+
+        destination.textContent = infoOmDyr;
+        destination.appendChild(document.createElement("img")).src = dyr.billede;
+      }
     </script>
   </body>
 </html>
