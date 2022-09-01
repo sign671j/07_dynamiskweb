@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Russo+One&display=swap" rel="stylesheet" />
     <title>bistro babushka</title>
     <style>
+      /* ---------STYLING AF FORSIDE------------*/
       * {
         margin: 0;
         padding: 0;
@@ -81,7 +82,7 @@
         padding-bottom: 10px;
       }
 
-      /* POP UP STYLING*/
+      /* ---------POP UP STYLING------------*/
 
       #popup {
         position: fixed;
@@ -177,10 +178,14 @@
     </div>
 
     <script>
+      // Lytter efter om DOM er loaded og går til start funktionen
+
       document.addEventListener("DOMContentLoaded", start);
 
       let retter;
       let filter = "alle";
+
+      // Start funktion
 
       function start() {
         const url = "https://babushka-dd8a.restdb.io/rest/menu";
@@ -197,8 +202,12 @@
           vis();
         }
 
+        // Tilføjer eventlistneere til buttons
+
         const filterKnapper = document.querySelectorAll("nav button");
         filterKnapper.forEach((knap) => knap.addEventListener("click", filtrerRetter));
+
+        // Funktion til at filtrere retterne
 
         function filtrerRetter() {
           filter = this.dataset.retter;
@@ -208,13 +217,19 @@
           vis();
         }
 
+        // Constanter laves til section og template
+
         const section = document.querySelector("section");
         const template = document.querySelector("template").content;
+
+        // JSON funktion
 
         function vis() {
           console.log(retter);
 
           section.textContent = "";
+
+          // Tilføjer data fra json til hvert element
 
           retter.forEach((ret) => {
             if (filter == ret.kategori || filter == "alle") {
