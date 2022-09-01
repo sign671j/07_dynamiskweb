@@ -21,8 +21,8 @@
         margin: 0 auto;
       }
       article {
-        padding: 5px;
-        border: solid black 2px;
+        padding: 10px;
+        background-color: #e0dedf;
       }
 
       section {
@@ -56,7 +56,7 @@
       }
 
       button {
-        border: solid black 1px;
+        background-color: #e0dedf;
         font-family: "Russo One", sans-serif;
         text-transform: uppercase;
         padding-top: 7px;
@@ -64,6 +64,10 @@
         padding-left: 10px;
         padding-right: 10px;
         margin-right: 10px;
+      }
+
+      button:hover {
+        background-color: #c7c5c6;
       }
 
       .navn {
@@ -198,7 +202,7 @@
 
         function filtrerRetter() {
           filter = this.dataset.retter;
-          const heading = document.querySelector(".kategori");
+          const heading = document.querySelector(".kategoriSkrift");
           filter = this.dataset.retter;
           heading.textContent = this.textContent;
           vis();
